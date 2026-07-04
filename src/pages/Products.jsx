@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Plus, Search, Edit2, Trash2, Save, X, Package, Upload } from 'lucide-react'
 
-const API = import.meta.env.VITE_API_URL
+const API = import.meta.env.VITE_API_URL || 'http://88.223.94.1:5000'
 const empty = { pcode:'', pname:'', packing:'', manufacturer:'', stock:0, mrp:0 }
 
 export default function Products() {

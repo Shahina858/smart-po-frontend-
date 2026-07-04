@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { ArrowLeft, Download, Edit2, Save, X, AlertTriangle, CheckCircle } from 'lucide-react'
 
-const API = import.meta.env.VITE_API_URL
+const API = import.meta.env.VITE_API_URL || 'http://88.223.94.1:5000'
 
 export default function POReview() {
   const { id } = useParams()

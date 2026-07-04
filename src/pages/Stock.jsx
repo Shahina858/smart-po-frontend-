@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Save, Boxes, Upload, FileText } from 'lucide-react'
 
-const API = import.meta.env.VITE_API_URL
+const API = import.meta.env.VITE_API_URL || 'http://88.223.94.1:5000'
 
 export default function Stock() {
   const [products, setProducts] = useState([])

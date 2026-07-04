@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Plus, Edit2, Trash2, Save, X, Users } from 'lucide-react'
 
-const API = import.meta.env.VITE_API_URL
+const API = import.meta.env.VITE_API_URL || 'http://88.223.94.1:5000'
 const empty = { name:'', gmail:'', ccode:'', contact_person:'', drug_license:'' }
 const colors = ['#0d9488','#7c3aed','#2563eb','#ea580c','#059669','#d97706']
 const colorBgs = ['#f0fdfa','#faf5ff','#eff6ff','#fff7ed','#f0fdf4','#fffbeb']

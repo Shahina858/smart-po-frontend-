@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { Eye, FileSpreadsheet } from 'lucide-react'
 
-const API = import.meta.env.VITE_API_URL
+const API = import.meta.env.VITE_API_URL || 'http://88.223.94.1:5000'
 
 const statusStyle = {
   completed:  { bg:'#f0fdf4', color:'#16a34a', border:'#bbf7d0', label:'COMPLETED' },

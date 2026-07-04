@@ -3,7 +3,7 @@ import axios from 'axios'
 import { FileText, CheckCircle, AlertTriangle, TrendingUp, Download, ArrowRight, Package } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 
-const API = import.meta.env.VITE_API_URL
+const API = import.meta.env.VITE_API_URL || 'http://88.223.94.1:5000'
 
 export default function Dashboard() {
   const [stats, setStats] = useState({ pos_today:0, xls_generated:0, total_unmatched:0, total_pos:0 })
