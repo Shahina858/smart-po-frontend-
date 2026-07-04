@@ -19,9 +19,8 @@ export default function Dashboard() {
       axios.get(`${API}/api/products?search=`),
     ]).then(([s, p, pr]) => {
       setStats(s.data)
-      setRecentPOs(p.data.slice(0, 6))
-      // Filter products with stock <= 2
-      const low = pr.data.filter(p => p.stock <= 2)
+setRecentPOs(Array.isArray(p.data) ? p.data.slice(0, 6) : [])      // Filter products with stock <= 2
+     const low = Array.isArray(pr.data) ? pr.data.filter(p => p.stock <= 2) : []
       setLowStock(low)
     }).finally(() => setLoading(false))
   }, [])
