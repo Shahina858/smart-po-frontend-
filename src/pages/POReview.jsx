@@ -59,11 +59,10 @@ export default function POReview() {
     const r = await axios.get(`${API}/api/po/${id}`)
     setPO(r.data)
   }
-
 function downloadXLS() {
   if (po?.xls_path) {
     const filename = po.xls_path.split('\\').pop().split('/').pop()
-    window.open(`http://88.223.94.1/outputs/${filename}`, '_blank')
+    window.open(`http://88.223.94.1:5000/outputs/${filename}`, '_blank')
   } else {
     alert('XLS not generated yet')
   }
