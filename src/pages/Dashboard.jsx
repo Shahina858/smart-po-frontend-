@@ -99,9 +99,9 @@ export default function Dashboard() {
                      borderRadius:'10px',padding:'6px 14px'}}>
           <div style={{width:'7px',height:'7px',borderRadius:'50%',background:'#10b981',
                        boxShadow:'0 0 6px #10b981'}} />
-          <span style={{fontSize:'12px',color:'#0d9488',fontWeight:600}}>
-            Auto-refreshing · {lastUpdated.toLocaleTimeString('en-IN')}
-          </span>
+         <span style={{fontSize:'12px',color:'#0d9488',fontWeight:600}}>
+  Auto-refreshing
+</span>
         </div>
       </div>
 
