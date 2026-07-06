@@ -183,25 +183,35 @@ setRecentPOs(Array.isArray(p.data) ? p.data.slice(0, 6) : [])      // Filter pro
                   {s.label}
                 </span>
                 {/* XLS Download button */}
-                {po.xls_path && (
-                  <button
-                    onClick={e => {
-                      e.stopPropagation()
-                      const filename = po.xls_path.split('\\').pop().split('/').pop()
-                      window.open(`${API}/outputs/${filename}`, '_blank')
-                    }}
-                    style={{
-                      display:'flex',alignItems:'center',gap:'5px',
-                      padding:'5px 12px',borderRadius:'8px',fontSize:'12px',fontWeight:600,
-                      background:'#f0fdf4',color:'#16a34a',
-                      border:'1px solid #bbf7d0',cursor:'pointer',
-                    }}
-                    onMouseEnter={e=>{e.currentTarget.style.background='#16a34a';e.currentTarget.style.color='white'}}
-                    onMouseLeave={e=>{e.currentTarget.style.background='#f0fdf4';e.currentTarget.style.color='#16a34a'}}
-                  >
-                    <Download size={12}/> XLS
-                  </button>
-                )}
+               {po.xls_path && (
+  <button
+    onClick={async e => {
+      e.stopPropagation()
+      const filename = po.xls_path.split('\\').pop().split('/').pop()
+      const url = `https://smartpo.webishopi.com/outputs/${filename}`
+      const response = await fetch(url)
+      const blob = await response.blob()
+      const blobUrl = window.URL.createObjectURL(blob)
+      const a = document.createElement('a')
+      a.href = blobUrl
+      a.download = filename
+      document.body.appendChild(a)
+      a.click()
+      document.body.removeChild(a)
+      window.URL.revokeObjectURL(blobUrl)
+    }}
+    style={{
+      display:'flex',alignItems:'center',gap:'5px',
+      padding:'5px 12px',borderRadius:'8px',fontSize:'12px',fontWeight:600,
+      background:'#f0fdf4',color:'#16a34a',
+      border:'1px solid #bbf7d0',cursor:'pointer',
+    }}
+    onMouseEnter={e=>{e.currentTarget.style.background='#16a34a';e.currentTarget.style.color='white'}}
+    onMouseLeave={e=>{e.currentTarget.style.background='#f0fdf4';e.currentTarget.style.color='#16a34a'}}
+  >
+    <Download size={12}/> XLS
+  </button>
+)}
               </div>
             </div>
           )
