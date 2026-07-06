@@ -62,6 +62,7 @@ export default function POReview() {
 function downloadXLS() {
   if (po?.xls_path) {
     const filename = po.xls_path.split('\\').pop().split('/').pop()
+    // Files are on VPS, use direct port 5000
     window.open(`http://88.223.94.1:5000/outputs/${filename}`, '_blank')
   } else {
     alert('XLS not generated yet')
