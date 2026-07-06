@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom'
 import { Bell, FileText, CheckCircle, ArrowRight } from 'lucide-react'
 
 const API = import.meta.env.VITE_API_URL || 'http://88.223.94.1:5000'
-
 export default function Alerts() {
   const [pos, setPOs] = useState([])
   const [loading, setLoading] = useState(true)
