@@ -60,14 +60,14 @@ export default function POReview() {
     setPO(r.data)
   }
 
-  function downloadXLS() {
-    if (po?.xls_path) {
-      const filename = po.xls_path.split('\\').pop().split('/').pop()
-      window.open(`${API}/outputs/${filename}`, '_blank')
-    } else {
-      alert('XLS not generated yet')
-    }
+function downloadXLS() {
+  if (po?.xls_path) {
+    const filename = po.xls_path.split('\\').pop().split('/').pop()
+    window.open(`http://88.223.94.1/outputs/${filename}`, '_blank')
+  } else {
+    alert('XLS not generated yet')
   }
+}
 
   if (loading) return (
     <div style={{display:'flex',alignItems:'center',justifyContent:'center',height:'60vh'}}>
