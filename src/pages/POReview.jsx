@@ -59,17 +59,24 @@ export default function POReview() {
     const r = await axios.get(`${API}/api/po/${id}`)
     setPO(r.data)
   }
-function downloadXLS() {
+async function downloadXLS() {
   if (po?.xls_path) {
     const filename = po.xls_path.split('\\').pop().split('/').pop()
     const url = `https://smartpo.webishopi.com/outputs/${filename}`
-    const a = document.createElement('a')
-    a.href = url
-    a.download = filename
-    a.target = '_blank'
-    document.body.appendChild(a)
-    a.click()
-    document.body.removeChild(a)
+    try {
+      const response = await fetch(url)
+      const blob = await response.blob()
+      const blobUrl = window.URL.createObjectURL(blob)
+      const a = document.createElement('a')
+      a.href = blobUrl
+      a.download = filename
+      document.body.appendChild(a)
+      a.click()
+      document.body.removeChild(a)
+      window.URL.revokeObjectURL(blobUrl)
+    } catch (err) {
+      window.open(url, '_blank')
+    }
   } else {
     alert('XLS not generated yet')
   }
