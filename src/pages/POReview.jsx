@@ -62,7 +62,14 @@ export default function POReview() {
 function downloadXLS() {
   if (po?.xls_path) {
     const filename = po.xls_path.split('\\').pop().split('/').pop()
-    window.open(`https://smartpo.webishopi.com/outputs/${filename}`, '_blank')
+    const url = `https://smartpo.webishopi.com/outputs/${filename}`
+    const a = document.createElement('a')
+    a.href = url
+    a.download = filename
+    a.target = '_blank'
+    document.body.appendChild(a)
+    a.click()
+    document.body.removeChild(a)
   } else {
     alert('XLS not generated yet')
   }
